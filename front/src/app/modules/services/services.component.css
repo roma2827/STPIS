@@ -1,0 +1,222 @@
+.poster__title {
+  padding: 20px 30px;
+  font-weight: 800;
+  font-size: 40px;
+  color: goldenrod;
+}
+
+.all__films {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 20px;
+}
+
+.film__block {
+  width: 25%;
+  padding: 35px 20px;
+  margin: 10px 0px;
+
+  /*background-color: gold;*/
+  text-align: center;
+}
+
+.film__imj {
+}
+
+.film__name {
+  padding: 30px;
+  font-size: 40px;
+  font-weight: 700;
+  color: rgb(68, 63, 63);
+  text-transform: uppercase;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+
+.films__header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+
+.buy-ticket-button-all-films {
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 50px;
+  border: 4px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.buy-ticket-button-all-films:hover {
+  color: #ffffff !important;
+  background: #f6b93b;
+  border-color: #f6b93b !important;
+  transition: all 0.4s ease 0s;
+}
+
+
+
+
+
+label {
+  margin-top: 20px;
+  font-size: 18px;
+  margin-left: 70px;
+  font-weight: 600;
+  color: grey;
+  text-transform: capitalize;
+}
+
+
+.modal-title {
+  padding-left: 155px;
+  color: #454449;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.modal-header {
+  background-color: goldenrod;
+}
+
+.form-control {
+  display: block;
+  width: 79%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: 1.375rem .75rem;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 3px solid grey;
+  border-radius: 2.25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-left: 52px;
+}
+
+.example_a {
+  color: goldenrod !important;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-weight: 900;
+  background: none;
+  border: 3px solid grey !important;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.example_a:hover {
+  cursor: pointer;
+  color: #ffffff !important;
+  background: goldenrod;
+  transition: all 0.3s ease 0s;
+}
+
+.text-center {
+  text-align: center!important;
+  margin-right: 46px;
+}
+
+
+
+
+
+.admin__panel__header {
+  font-size: 35px;
+  text-align: center;
+  font-weight: 800;
+  color: rgb(68, 63, 63);
+  text-transform: uppercase;
+}
+
+.admin__panel__body {
+  display: flex;
+}
+
+.admin__button__panel {
+  /*width: 25%;*/
+  margin-top: 25px;
+  text-align: center;
+}
+
+.admins__panel {
+  margin-left: 80px;
+}
+
+.admin-button {
+  color: #494949 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 50px;
+  border: 4px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.admin-button:hover {
+  cursor: pointer;
+  color: white !important;
+  background: goldenrod;
+  border-color: goldenrod !important;
+  transition: all 0.3s ease 0s;
+}
+
+.admin {
+  margin-bottom: 25px;
+}
+
+
+
+
+
+.button_add_film {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button_add_film:hover {background-color: #3e8e41}
+
+.button_add_film:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.ng-valid {
+  border-left: 5px solid green;
+}
+
+.invalid {
+  margin-left: 54px;
+  /* text-align: center; */
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+}

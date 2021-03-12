@@ -1,0 +1,85 @@
+<nav class="navbar navdar-default" style="background-color: rgb(68, 63, 63)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" routerLink="">STPIS</a>
+    </div>
+    <div>
+      <ul class="navbar-nav">
+        <li class="active">
+          <a class="navbar-brand" routerLink="">Home</a>
+          <a class="navbar-brand" routerLink="/services">All Services</a>
+          <a *ngIf="storageService.getCurrentUser() == null" class="example_d" rel="nofollow noopener" (click)="_openSignInModal(SignIn)">
+              Sign In
+          </a>
+          <a *ngIf="storageService.getCurrentUser()" class="navbar-brand" routerLink="/user-account/{{storageService.getCurrentUser().login}}">
+            {{storageService.getCurrentUser().login}}
+          </a>
+          <a *ngIf="storageService.getCurrentUser()" (click)="logout()" routerLink="" class="logout__button" rel="nofollow noopener">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<ng-template #SignIn>
+  <div class="modal-header">
+    <h4 class="modal-title">Sign In</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeSignInModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <input placeholder="login" name="login" class="form-control" [(ngModel)]="loginModel.username" required/>
+    </div>
+    <div class="form-group">
+      <input placeholder="password" type="password" class="form-control" [(ngModel)]="loginModel.password" required/>
+    </div>
+  </div>
+  <div class="text-center mb-3">
+    <a class="example_a" rel="nofollow noopener" (click)="_login()">
+      Sign In
+    </a>
+  </div>
+  <div class="modal-footer">
+    <div>
+      <div class="footer__text">
+        Not a member?
+        <a class="openRegistration" (click)="_openRegistrationModal(Registration)">Sign up</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<!--Registration-->
+<ng-template #Registration>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sign up</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeRegistrationModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" [formGroup]="form">
+      <input formControlName="login" placeholder="login" name="login" class="form-control" [(ngModel)]="editableUs.login" required/>
+    </div>
+    <div class="invalid" *ngIf="form.get('login').invalid && form.get('login').dirty">
+      login must contain 5 characters and begin with a letter
+    </div>
+    <div class="form-group" [formGroup]="form">
+      <input formControlName="password" placeholder="password" type="password" class="form-control" [(ngModel)]="editableUs.password" required/>
+    </div>
+    <div class="invalid" *ngIf="form.get('password').invalid && form.get('password').dirty">
+      uppercase and lowercase latin letters, numbers
+    </div>
+    <div class="text-center mb-3">
+      <a disabled="form.invalid" class="example_a" rel="nofollow noopener" (click)="_addUser()">
+        Sign Up
+      </a>
+    </div>
+  </div>
+</ng-template>

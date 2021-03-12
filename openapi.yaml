@@ -1,0 +1,208 @@
+openapi: "3.0.0"
+info:
+  version: "0.0.1"
+  title: "STPIS"
+security: 
+  - JWT: []
+tags:
+  - name: admin
+    description: "Admin"
+  - name: user
+    description: "User"
+  - name: all
+    description: "All"
+paths:
+  /api/service:
+    get:
+      summary: "Получить список сервисов"
+      operationId: getAll
+      tags:
+        - all
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Service'
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+    post:
+      summary: "Добавить сервис"
+      operationId: create
+      tags:
+        - admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Service"
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+  /api/service/{serviceId}:
+    parameters:
+      - in: path
+        description: "Идентифкатор сервиса"
+        name: "serviceId"
+        required: true
+        schema:
+          type: integer
+          format: int64
+    delete:
+      summary: "Удалить сервис"
+      operationId: delete
+      tags:
+        - admin
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+  /api/subscription:
+    post:
+      summary: "Подписаться"
+      operationId: subscribe
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Subscriptions"
+      responses:
+        200:
+          description: Ok
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+  /api/user/login/{login}:
+    parameters:
+      - in: path
+        description: "Логин"
+        name: "login"
+        required: true
+        schema:
+          type: integer
+          format: int64
+    get:
+      summary: "Получить пользователя по логину"
+      operationId: getByLogin 
+      tags:
+        - all
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/User'
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+  /api/user:
+    post:
+      summary: "Создать пользователя"
+      operationId: createUser
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserBO"
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Bad request
+        404:
+          description: Not found
+        500:
+          description: Internal server error
+components:
+  securitySchemes:
+    JWT:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Service:
+      type: object
+      properties:
+        serviceId:
+          description: "Идентификатор"
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        coast:
+          type: integer
+          format: int64
+          
+    Subscriptions:
+      type: object
+      properties:
+        subscriptionsId:
+          description: "Идентификатор"
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        serviceId:
+          type: integer
+          format: int64
+          
+    User:
+      type: object
+      properties:
+        userId:
+          description: "Идентификатор"
+          type: integer
+          format: int64
+        role:
+          type: string
+        login:
+          type: string
+        password:
+          type: string
+        money:
+          type: integer
+          format: int64
+    
+    UserBO:
+      type: object
+      properties:
+        login:
+          type: string
+        password:
+          type: string
