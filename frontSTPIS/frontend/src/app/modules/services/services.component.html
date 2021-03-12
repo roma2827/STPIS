@@ -1,0 +1,71 @@
+<ng4-loading-spinner></ng4-loading-spinner>
+<div class="container films__header">
+  <div class="poster__title">
+    Services
+  </div>
+  <div class="admins__panel" *ngIf="storageService.getCurrentUser()">
+    <div class="admin__button__panel" *ngIf="storageService.getCurrentUser().role === 'ADMIN'">
+      <button class="button_add_film" data-toggle="modal" data-target="#addFilmModal"
+              (click)="_openModal(template)">
+        Add Service
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="all__films">
+  <hr align="center" width="90%" size="50" color="black"/>
+  <div class="film__block" *ngFor="let service of services">
+    <div class="film__imj">
+      {{service.description}}
+    </div>
+    <div class="film__name">
+      {{service.name}}
+    </div>
+    <div class="button_cont" align="center">
+      <a class="buy-ticket-button-all-films" (click)="subscribe()" rel="nofollow noopener">
+        Subscribe
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create Service</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" [formGroup]="form">
+      <label>Service name</label>
+      <input formControlName="filmName" placeholder="Please enter service name" class="form-control" [(ngModel)]="editableS.name" required/>
+    </div>
+    <div class="invalid" *ngIf="form.get('filmName').invalid && form.get('filmName').dirty">
+      Service name can only contain letters
+    </div>
+    <div class="form-group" [formGroup]="form">
+      <label>Description</label>
+      <input formControlName="description" placeholder="Please enter description" class="form-control" [(ngModel)]="editableS.description" required/>
+    </div>
+    <div class="invalid" *ngIf="form.get('description').invalid && form.get('description').dirty">
+      Description must contain at least 10 characters
+    </div>
+    <div class="form-group" [formGroup]="form">
+      <label>Coast</label>
+      <input formControlName="coast" placeholder="Please enter coast" class="form-control" [(ngModel)]="editableS.coast" required/>
+    </div>
+    <div class="invalid" *ngIf="form.get('coast').invalid && form.get('coast').dirty">
+      Please enter coast
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="text-center mb-3">
+      <a class="example_a" rel="nofollow noopener" (click)="_addService()">
+        Create
+      </a>
+    </div>
+  </div>
+</ng-template>
